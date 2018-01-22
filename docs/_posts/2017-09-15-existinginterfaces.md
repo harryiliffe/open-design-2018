@@ -1,6 +1,6 @@
 ---
 layout: default
-categories: week8
+categories: week1
 title: "Test"
 subtitle: "An example Page"
 order: 1
