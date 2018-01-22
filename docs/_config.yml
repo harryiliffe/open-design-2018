@@ -3,7 +3,8 @@ description: A place for me to document my open design thoughts and processes.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
-
+include: ["_pages"]
+permalink: /:title/
 
 sections: [
     ['week1', 'Week 1'],
