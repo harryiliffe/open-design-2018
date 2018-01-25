@@ -8,10 +8,7 @@ permalink: /:title/
 
 sections: [
     ['research', 'Research'],
-    ['week1', 'Week 1'],
-    ['week2', 'Week 2'],
-    ['week3', 'Week 3'],
-    ['week4', 'Week 4'],
+    ['ideation', 'Ideation'],
 ]
 
 
