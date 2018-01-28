@@ -4,7 +4,7 @@
     {% for section in site.sections %}
         {% assign attr = section[0] %}
         {% assign label = section[1] %}
-        <li class="nav-header"><a  data-order="0"  href="{{ site.baseurl }}/{{ section[0] }}">{{ section[1] }}</a></li>
+        <li class="nav-header"><a  data-order="0"  href="{{ site.baseurl }}/{{ attr }}">{{ label }}</a></li>
         {% for page in site.categories[attr] %}
             <li class="nav-link" ><a data-order="{{ page.order }}" href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
         {% endfor %}

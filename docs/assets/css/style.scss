@@ -229,7 +229,7 @@ ul.nav {
   list-style-type: none;
 }
 
-ul.nav *:hover {
+ul.nav *:hover :not(.no-link) {
   background-color: lightgrey;
 }
 
