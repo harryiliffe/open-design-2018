@@ -8,6 +8,10 @@ permalink: /ideation/
 
 ### Ideas
 
+The image below is a collection of words that describe the type of project we want to embark on. The words circled are our key ideas.
+
+![Idea Word Association]({{site.imageurl}}/wordassociation.jpg)
+
 A wearable pet:
 <http://www.dyvikdesign.com/site/portfolio-jens/ref.html>
 
