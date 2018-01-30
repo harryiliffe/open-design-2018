@@ -6,7 +6,7 @@ subtitle: "An example Page"
 order: 4
 ---
 
-Here is our initial brainstorm of the topics and structure of our first presentation.
+Here is our initial brainstorm of the topics and content structure for our first presentation.
 
 ![Presentation Slide 01]({{site.imageurl}}/brainstorm_presentation_week1.jpg)
 
