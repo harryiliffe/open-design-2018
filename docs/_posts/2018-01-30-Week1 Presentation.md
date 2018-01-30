@@ -1,7 +1,7 @@
 ---
 layout: default
-categories: research, Presentation
-title: "Week 1 Presentation and Script"
+categories: presentations
+title: "Week 1"
 subtitle: "An example Page"
 order: 4
 ---
