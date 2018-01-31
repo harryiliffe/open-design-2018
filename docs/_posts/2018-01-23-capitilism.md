@@ -1,6 +1,6 @@
 ---
 layout: default
-categories: research
+categories: hidden
 title: "Open Design and Businesses"
 subtitle: "An example Page"
 order: 1
