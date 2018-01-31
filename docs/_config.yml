@@ -9,6 +9,7 @@ permalink: /:title/
 sections: [
     ['research', 'Research'],
     ['ideation', 'Ideation'],
+    ['presentations', 'Presentations'],
 ]
 
 
