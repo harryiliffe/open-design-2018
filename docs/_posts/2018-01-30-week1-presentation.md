@@ -38,6 +38,11 @@ as you can see, by simply using the control panel and a couple of alligator clip
 
 
 ![Presentation Slide 07]({{site.imageurl}}/Week1_Screen7.jpg)
-
+After studying at MIT and earning a BS in Electrical Engineering and Computer Science (EECS) in 2003 and a Master of Engineering in EECS in 2005, Limor Fried (also known by her moniker ladyada), founded what would become AdaFruit Industries. Frieds goal was to create the best place online for learning electronics and making the best designed products for makers of all ages and skill levels. She is known to be a key player in the open source movement with Adafruit having over 100+ employers and being ranked /#11 in the top 20 USA manufacturing companies.
 
 ![Presentation Slide 08]({{site.imageurl}}/Week1_Screen8.jpg)
+Adafruit and MakeyMakey are both good examples of businesses that have made there mark through designing, marketing, and selling open source hardware.
+Now this may seem like a contradiction. Open Source means free so how can they make money.
+If we compare adafruit to another company that sells closed hardware we can see that there are a number of differences. Whilst adafruit does make money from selling there hardware, unlike other closed source businesses, they allow anyone to read, remix and collaborate on everything supporting the hardware. All the tutorials, scematics and source code are free and open for anyone to view.
+Adafruit also uses the money it makes to provide the documentation, research, and produce more higher quality products.
+If adafruit only designed the hardware and left it up to the individual to manufacture than it would diminish the massive impact it has been able to have through making electronics accessible to people from all works of life. In the global conquest of ideas capitalism has won and businesses like adafruit and MakeyMakey have found a way to create, and influence for the greater good inside that system.
