@@ -3,6 +3,11 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+
+
+
+/* BLOCKS */
+
 .main {
   width: 420px;
   max-width: 100%;
@@ -11,70 +16,96 @@ body {
   margin: 0px auto;
   padding-bottom: 1;
   background-color: white;
+  border-radius: 2px;
+}
+
+.block {
+  height: auto;
+  color: white;
+  padding: 6px 25px;
+  position: relative;
+  margin: 10px;
+  border-radius: 2px;
+  min-height: 150px;
+  text-align: center;
 }
 
 .header {
   background-color: #818dc5;
-  color: white;
-  padding: 6px;
-  /* box-shadow: 1px 1px 5px #555555; */
-  position: relative;
-  text-align: center;
+
+  margin: 0px;
+  border-radius: 2px 2px 0px 0px;
+  min-height: unset;
 }
 
 .explore {
-  height: auto;
   background-color: #79cbca;
-  color: white;
-  padding: 6px;
-  /* box-shadow: 1px 1px 5px #555555; */
-  position: relative;
-  margin: 10px;
-  border-radius: 2px;
 }
 
 .manage {
-  height: auto;
   background-color: #fcd486;
-  color: white;
-  padding: 6px;
-  /* box-shadow: 1px 1px 5px #555555; */
-  position: relative;
-  margin: 10px;
-  border-radius: 2px;
 }
 
 .visualise {
-  height: auto;
   background-color: #f19b96;
-  color: white;
-  padding: 6px;
-  /* box-shadow: 1px 1px 5px #555555; */
-  position: relative;
-  margin: 10px;
-  border-radius: 2px;
 }
+
+
+/* FONTS */
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 26px;
+  -webkit-margin-before: 10px;
+  -webkit-margin-after: 10px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+
+/* INPUTS */
 
 .button {
   text-align: center;
   margin: 12px auto;
 }
 
-input[type=button] {
+.button a {
     text-decoration: none;
     border: none;
     color: white;
-    background-color: grey;
-    width: 15%;
-    font-size: 22px;
+    font-size: 15px;
     cursor: pointer;
-    /* box-shadow: 1px 1px 6px #555; */
     outline: none;
     margin: 0px auto;
+    padding: 0px 10px;
+    padding-top: 5px;
     display: inline-block;
     text-align: center;
     border-radius: 5px;
+    height: 25px;
+    min-width: 22%;
 }
+
+ .explore .button a{
+   background-color: white;
+   color: #79cbca;
+ }
+
+ .manage .button a{
+   background-color: white;
+   color: #fcd486;
+ }
+
+ .visualise .button a{
+   background-color: white;
+   color: #f19b96;
+ }
 
 input[type=range] {
     -webkit-appearance: none;
@@ -102,19 +133,20 @@ input[type=range]::-webkit-slider-runnable-track {
 
 /* Customize the label (the container) */
 .checkbox {
-  background-color: grey;
+  background-color: #8e8e8e;
   display: block;
   position: relative;
   padding-left: 35px;
-  margin: 12px auto;
+  margin: 12px 30px;
+  padding-top: 3px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 15px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 15%;
-  height: 25px;
+  min-width: 15%;
+  height: 22px;
   text-align: left;
   border-radius: 5px;
 
@@ -145,7 +177,7 @@ input[type=range]::-webkit-slider-runnable-track {
 
 /* When the checkbox is checked, add a blue background */
 .checkbox input:checked ~ .checkmark {
-  background-color: #50be65;
+  background-color: #ffa000;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -171,4 +203,19 @@ input[type=range]::-webkit-slider-runnable-track {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.explore label.checkbox{
+  background-color: white;
+  color: #79cbca;
+}
+
+.manage label.checkbox{
+  background-color: white;
+  color: #fcd486;
+}
+
+.visualise label.checkbox{
+  background-color: white;
+  color: #f19b96;
 }
