@@ -9,6 +9,7 @@ body {
   height: auto;
   align: center;
   margin: 0px auto;
+  padding-bottom: 1;
   background-color: white;
 }
 
@@ -16,7 +17,7 @@ body {
   background-color: #818dc5;
   color: white;
   padding: 6px;
-  box-shadow: 1px 1px 5px #555555;
+  /* box-shadow: 1px 1px 5px #555555; */
   position: relative;
   text-align: center;
 }
@@ -26,7 +27,7 @@ body {
   background-color: #79cbca;
   color: white;
   padding: 6px;
-  box-shadow: 1px 1px 5px #555555;
+  /* box-shadow: 1px 1px 5px #555555; */
   position: relative;
   margin: 10px;
   border-radius: 2px;
@@ -37,7 +38,7 @@ body {
   background-color: #fcd486;
   color: white;
   padding: 6px;
-  box-shadow: 1px 1px 5px #555555;
+  /* box-shadow: 1px 1px 5px #555555; */
   position: relative;
   margin: 10px;
   border-radius: 2px;
@@ -48,7 +49,7 @@ body {
   background-color: #f19b96;
   color: white;
   padding: 6px;
-  box-shadow: 1px 1px 5px #555555;
+  /* box-shadow: 1px 1px 5px #555555; */
   position: relative;
   margin: 10px;
   border-radius: 2px;
@@ -64,10 +65,10 @@ input[type=button] {
     border: none;
     color: white;
     background-color: grey;
-    padding: 6px 24px;
-    font-size: 16px;
+    width: 15%;
+    font-size: 22px;
     cursor: pointer;
-    box-shadow: 1px 1px 6px #555;
+    /* box-shadow: 1px 1px 6px #555; */
     outline: none;
     margin: 0px auto;
     display: inline-block;
@@ -171,81 +172,3 @@ input[type=range]::-webkit-slider-runnable-track {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-
-/*
-header {
-    background-color: #00878F;
-    color: white;
-    padding: 6px;
-    font-family: 'Roboto', sans-serif;
-    box-shadow: 1px 1px 5px #555555;
-    position: relative;
-}
-
-h1 {
-    margin: 0px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 32;
-}
-
-center>div {
-    padding: 24px 10px 10px 10px;
-    box-shadow: 1px 1px 5px #555555;
-}
-
-table {
-    margin: 0px 24px 0px 12px;
-}
-
-td {
-    color: #555;
-    width: 100%;
-}
-
-tr {
-    width: 100%;
-}
-
-
-.button:hover {
-    box-shadow: 1px 1px 3px #444;
-}
-
-input[type=range] {
-    -webkit-appearance: none;
-    outline: none;
-    width: 100%;
-    margin: 6px;
-}
-
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: 0px;
-    height: 15px;
-    width: 15px;
-    margin-top: -6px;
-    border-radius: 7.5px;
-}
-
-input.disabled[type=range]::-webkit-slider-thumb {
-    background: #999;
-}
-
-input.enabled[type=range]::-webkit-slider-thumb {
-    background: #00878F;
-    cursor: pointer;
-    box-shadow: 1px 1px 2px #777, 0px 0px 1px #777;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-    width: inherit;
-    height: 4px;
-    background: #ccc;
-    border-radius: 1px;
-}
-
-input.enabled[type=range]::-webkit-slider-runnable-track {
-    cursor: pointer;
-}
-
-*/
