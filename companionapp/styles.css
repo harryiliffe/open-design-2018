@@ -1,0 +1,251 @@
+body {
+  background-color: lightgrey;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main {
+  width: 420px;
+  max-width: 100%;
+  height: auto;
+  align: center;
+  margin: 0px auto;
+  background-color: white;
+}
+
+.header {
+  background-color: #818dc5;
+  color: white;
+  padding: 6px;
+  box-shadow: 1px 1px 5px #555555;
+  position: relative;
+  text-align: center;
+}
+
+.explore {
+  height: auto;
+  background-color: #79cbca;
+  color: white;
+  padding: 6px;
+  box-shadow: 1px 1px 5px #555555;
+  position: relative;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.manage {
+  height: auto;
+  background-color: #fcd486;
+  color: white;
+  padding: 6px;
+  box-shadow: 1px 1px 5px #555555;
+  position: relative;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.visualise {
+  height: auto;
+  background-color: #f19b96;
+  color: white;
+  padding: 6px;
+  box-shadow: 1px 1px 5px #555555;
+  position: relative;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.button {
+  text-align: center;
+  margin: 12px auto;
+}
+
+input[type=button] {
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: grey;
+    padding: 6px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 6px #555;
+    outline: none;
+    margin: 0px auto;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    outline: none;
+    width: 100%;
+    margin: 6px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 0px;
+    height: 15px;
+    width: 15px;
+    margin-top: -6px;
+    border-radius: 7.5px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: inherit;
+    height: 4px;
+    background: white;
+    border-radius: 1px;
+}
+
+
+/* Customize the label (the container) */
+.checkbox {
+  background-color: grey;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin: 12px auto;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 15%;
+  height: 25px;
+  text-align: left;
+  border-radius: 5px;
+
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px 0px 0px 5px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: #50be65;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*
+header {
+    background-color: #00878F;
+    color: white;
+    padding: 6px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 1px 1px 5px #555555;
+    position: relative;
+}
+
+h1 {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 32;
+}
+
+center>div {
+    padding: 24px 10px 10px 10px;
+    box-shadow: 1px 1px 5px #555555;
+}
+
+table {
+    margin: 0px 24px 0px 12px;
+}
+
+td {
+    color: #555;
+    width: 100%;
+}
+
+tr {
+    width: 100%;
+}
+
+
+.button:hover {
+    box-shadow: 1px 1px 3px #444;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    outline: none;
+    width: 100%;
+    margin: 6px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 0px;
+    height: 15px;
+    width: 15px;
+    margin-top: -6px;
+    border-radius: 7.5px;
+}
+
+input.disabled[type=range]::-webkit-slider-thumb {
+    background: #999;
+}
+
+input.enabled[type=range]::-webkit-slider-thumb {
+    background: #00878F;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px #777, 0px 0px 1px #777;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: inherit;
+    height: 4px;
+    background: #ccc;
+    border-radius: 1px;
+}
+
+input.enabled[type=range]::-webkit-slider-runnable-track {
+    cursor: pointer;
+}
+
+*/
