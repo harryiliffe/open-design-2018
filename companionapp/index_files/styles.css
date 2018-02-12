@@ -52,7 +52,7 @@ body {
 }
 
 .says {
-  background-color: #fcd486;
+  background-color: #79cbca;
 }
 
 /* FONTS */
@@ -74,6 +74,7 @@ h3 {
 /* INPUTS */
 
 .button {
+
 }
 
 .button a {
@@ -129,6 +130,8 @@ background-color: #eee !important;
    cursor: pointer;
    display: block;
    min-height: auto;
+
+
  }
 
 input[type=range] {
@@ -173,6 +176,7 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 22px;
   text-align: left;
   border-radius: 5px;
+
 }
 
 /* Hide the browser's default checkbox */
