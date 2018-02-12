@@ -12,7 +12,6 @@ void strokeDetect(int i);
 void modeInit();
 
 
-
 #define NUM_MODES 7
 
 int modeSelection = 0;
