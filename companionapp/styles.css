@@ -25,6 +25,7 @@ body {
   border-radius: 2px;
   min-height: 150px;
   text-align: center;
+  border-radius: 5px;
 }
 
 .header {
@@ -73,8 +74,6 @@ h3 {
 
 /* INPUTS */
 
-.button {
-}
 
 .button a {
     text-decoration: none;
@@ -130,6 +129,19 @@ background-color: #eee !important;
    display: block;
    min-height: auto;
  }
+
+ .backbutton  {
+     float:left;
+     margin-top: 15px;
+     left: 5px;
+     top: 5px;
+     width: 10px;
+     height: 10px;
+     border: solid white;
+     border-width: 0px 5px 5px 0px;
+     transform: rotate(135deg);
+}
+
 
 input[type=range] {
     -webkit-appearance: none;
