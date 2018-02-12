@@ -1,3 +1,5 @@
+#include <ArduinoJson.h>
+
 #include "Wire.h"
 
 #include <Ticker.h>
@@ -11,8 +13,9 @@
 void strokeDetect(int i);
 void modeInit();
 
+StaticJsonBuffer<200> jsonBuffer;
 
-#define NUM_MODES 7
+
 
 int modeSelection = 0;
 
@@ -27,14 +30,14 @@ struct Mode {
 
 int modeEnabled = 0;
 
+#define NUM_MODES 5
+
 Mode modes[NUM_MODES] = {
   {"Switch", CRGB::White, true, false},
   {"Idle", CRGB::Blue, false, true},
-  {"Gyro Color Change", CRGB::Aqua, false, false},
-  {"Other Mode 2", CRGB::Green, false, false},
-  {"Other Mode 3", CRGB::Yellow, false, false},
-  {"Other Mode 5", CRGB::Red, false, false},
-  {"Other Mode 6", CRGB::Purple, false, false}
+  {"Hide & Seek", CRGB::Aqua, false, false},
+  {"Greg Says", CRGB::Green, false, false},
+  {"Visualise", CRGB::Yellow, false, false},
 };
 
 
@@ -45,9 +48,15 @@ Mode modes[NUM_MODES] = {
 
 void setup() {
   Serial.begin(72880);
+
+  String realSize = String(ESP.getFlashChipRealSize());
+  String ideSize = String(ESP.getFlashChipSize());
+  bool flashCorrectlyConfigured = realSize.equals(ideSize);
+
+  if(!flashCorrectlyConfigured){ Serial.println("flash incorrectly configured, SPIFFS cannot start, IDE size: " + ideSize + ", real size: " + realSize);}
+
   Serial.println("Starting Code");
   Wire.begin();
-//  ota_setup();
   leds_setup();
   mpu_setup();
   modeInit();
@@ -104,6 +113,12 @@ void modeInit() {
       break;
     case 1:
       fill_solid(leds, NUM_LEDS, CRGB::LightGrey);
+      break;
+    case 2:
+      break;
+    case 3:
+      break;
+    case 4:
       break;
   }
   FastLED.show();
