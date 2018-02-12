@@ -83,7 +83,7 @@ bool mpu_setup() {
     attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), dmpDataReady, RISING);
     mpuIntStatus = mpu.getIntStatus();
 
-    Serial.println(F("DMP ready! Waiting for first interrupt..."));
+    Serial.println(F("DMP ready!"));
 
     // get expected DMP packet size for later comparison
     packetSize = mpu.dmpGetFIFOPacketSize();
@@ -95,6 +95,7 @@ bool mpu_setup() {
     delay(5000);
     return false;
   }
+  Serial.println("MPU INITAILISED");
 }
 
 

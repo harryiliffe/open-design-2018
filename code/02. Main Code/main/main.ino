@@ -1,4 +1,3 @@
-//#include "ota.h"
 #include "Wire.h"
 
 #include <Ticker.h>
@@ -43,16 +42,17 @@ Mode modes[NUM_MODES] = {
 #include "mpu.h"
 #include "leds.h"
 #include "touch.h"
+#include "wifi.h"
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(72880);
   Serial.println("Starting Code");
   Wire.begin();
 //  ota_setup();
   leds_setup();
-  //  while (!mpu_setup()) {}
   mpu_setup();
   modeInit();
+  wifi_setup();
   FastLED.setBrightness(20);
   //  debug.attach(1, readYPR);
 }
@@ -60,7 +60,7 @@ void setup() {
 
 
 void loop() {
-//  ArduinoOTA.handle();
+  wifi_loop();
 
   mpu_loop();
   touch_read();
