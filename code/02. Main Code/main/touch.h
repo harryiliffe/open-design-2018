@@ -27,8 +27,8 @@ button buttonState[NUM_BUTTONS] = {
   {NULL, NULL, NULL, NULL, "stroke"}, //0
   {NULL, NULL, NULL, NULL, "stroke"}, //1
   {NULL, NULL, NULL, NULL, "stroke"}, //2
-  {NULL, NULL, NULL, NULL, "null"}, //3
-  {NULL, NULL, NULL, NULL, "null"}, //4
+  {NULL, NULL, NULL, NULL, "stroke"}, //3
+  {NULL, NULL, NULL, NULL, "stroke"}, //4
   {NULL, NULL, NULL, NULL, "null"}, //5
   {NULL, NULL, NULL, NULL, "null"}, //6
   {NULL, NULL, NULL, NULL, "null"}, //7
@@ -48,8 +48,8 @@ void touch_legDetect() {
     buttonState[LEGL1].touchRegistered = true;
     if (modeEnabled == 0) {
       modeEnabled = modeSelection;
-      modeInit();
       Serial.println("Mode Changed: " + modes[modeEnabled].name);
+      modeInit();
     } else {
       modeEnabled = 0;
       modeInit();
@@ -78,23 +78,20 @@ void touch_read() {
           buttonState[i].touchRegistered = false;
         }
       }
-      if (buttonState[i].type == "stroke" && buttonState[i + 1].type == "stroke") {
+      if (buttonState[i].type == "stroke" && buttonState[i + 1].type == "stroke" && modes[modeEnabled].strokeEnabled) {
         if (!buttonState[i].touchRegistered) {
           if (buttonState[i].touchStart < buttonState[i + 1].touchStart) {
             duration = (buttonState[i + 1].touchStart - buttonState[i].touchStart);
             if (stroking && modes[modeEnabled].strokeAdjustment) {
               strokeLEDCount++;
-              Serial.println("Stroking Extra LED");
               strokeDetect(i);
             }
             else if (!stroking) {
               strokeLEDCount = 2;
-              Serial.println("Stroking Extra LED");
               strokeDetect(i);
             } else {
               //            Serial.println("Detected Stroke but did nothing");
             }
-
             buttonState[i].touchRegistered = true;
           }
         }
@@ -106,5 +103,12 @@ void touch_read() {
   touch_legDetect();
 }
 
-
+bool touch_exclusive(int button, int rangeMin, int rangeMax){
+  for(int i=rangeMin; i<rangeMax;i++){
+    if(buttonState[i].touch && i!=button){
+      return false;
+    }
+  }
+  return true;
+}
 

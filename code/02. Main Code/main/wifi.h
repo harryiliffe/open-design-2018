@@ -23,7 +23,7 @@ const char *ssid = "Greg 1.0"; // The name of the Wi-Fi network that will be cre
 const char *password = "";   // The password required to connect to it, leave blank for an open network
 
 const char *OTAName = "ota";           // A name and a password for the OTA service
-const char *OTAPassword = "ota";
+//const char *OTAPassword = "ota";
 
 
 const char* mdnsName = "greg"; // Domain name for the mDNS responder
@@ -93,7 +93,7 @@ void startWiFi() { // Start a Wi-Fi access point, and try to connect to some giv
   Serial.println("\" started\r\n");
   //  wifiMulti.addAP("Ventilation Nation", "Somebodyoncetoldmetheworldisgonnar0llme");   // add Wi-Fi networks you want to connect to
   wifiMulti.addAP("Flat-Queens", "hellotessa");
-  //  wifiMulti.addAP("ssid_from_AP_3", "your_password_for_AP_3");
+    wifiMulti.addAP("Bridget", "Banana123");
 
 
   Serial.println("Connecting");
@@ -118,7 +118,7 @@ void startWiFi() { // Start a Wi-Fi access point, and try to connect to some giv
 
 void startOTA() { // Start the OTA service
   ArduinoOTA.setHostname(OTAName);
-  ArduinoOTA.setPassword(OTAPassword);
+//  ArduinoOTA.setPassword(OTAPassword);
 
   ArduinoOTA.onStart([]() {
     Serial.println("Start");
@@ -155,10 +155,13 @@ void startMDNS() { // Start the mDNS responder
 }
 
 void startServer() { // Start a HTTP server with a file read handler and an upload handler
-  server.on("/edit.html",  HTTP_POST, []() {  // If a POST request is sent to the /edit.html address,
+  server.on("/edit2.html",  HTTP_POST, []() {  // If a POST request is sent to the /edit.html address,
     server.send(200, "text/plain", "");
   }, handleFileUpload);                       // go to 'handleFileUpload'
-
+  
+  server.on("/edit.html",  HTTP_POST, []() {  // If a POST request is sent to the /edit.html address,
+    server.send(200, "text/plain", "");
+  }, handleFileUpload);  
   server.onNotFound(handleNotFound);          // if someone requests any other file or page, go to function 'handleNotFound'
   // and check if the file exists
 
@@ -223,13 +226,13 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
         Serial.printf("[%u] Connected from %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
       }
       break;
-    case WStype_TEXT :                  // if new text data is received
-      JsonObject& root = jsonBuffer.parseObject(payload);
-      const char* type = root["type"];
-      if (type == "modechange") {
-        modeEnabled = root["mode"];
+    case WStype_TEXT :                  // if new text data is received'
+      if (payload[0] == 'M') {
+        modeEnabled = int(payload[1]-48);
+        Serial.println("Mode Changed: " + modes[modeEnabled].name);
         leds_modeChange(modes[modeEnabled].color);
         modeInit();
+        
       }
       break;
   }

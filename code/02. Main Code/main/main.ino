@@ -8,10 +8,16 @@
 #include "FastLED.h"
 
 
-//DEFINATIONS
+//DEFINATIONS===================================================================
 
 void strokeDetect(int i);
 void modeInit();
+void sound_stopLights(int light);
+void sound_stopTone(int pin);
+void greySays_playLevel();
+void greySays_respond();
+//===================================================================
+
 
 StaticJsonBuffer<200> jsonBuffer;
 
@@ -22,10 +28,12 @@ int modeSelection = 0;
 Ticker debug;
 
 struct Mode {
+  int id;
   String name;
   CRGB color;
   bool enabled;
   bool strokeAdjustment;
+  bool strokeEnabled;
 };
 
 int modeEnabled = 0;
@@ -33,11 +41,11 @@ int modeEnabled = 0;
 #define NUM_MODES 5
 
 Mode modes[NUM_MODES] = {
-  {"Switch", CRGB::White, true, false},
-  {"Idle", CRGB::Blue, false, true},
-  {"Hide & Seek", CRGB::Aqua, false, false},
-  {"Greg Says", CRGB::Green, false, false},
-  {"Visualise", CRGB::Yellow, false, false},
+  {0, "Switch", CRGB::White, true, false, true},
+  {1, "Idle", CRGB::Blue, false, true, true},
+  {2, "Hide & Seek", CRGB::Aqua, false, false, true},
+  {3, "Greg Says", CRGB::Green, false, false, false},
+  {4, "Visualise", CRGB::Yellow, false, false, true},
 };
 
 
@@ -45,6 +53,8 @@ Mode modes[NUM_MODES] = {
 #include "leds.h"
 #include "touch.h"
 #include "wifi.h"
+#include "sound.h"
+#include "gregsays.h"
 
 void setup() {
   Serial.begin(72880);
@@ -54,13 +64,13 @@ void setup() {
   bool flashCorrectlyConfigured = realSize.equals(ideSize);
 
   if(!flashCorrectlyConfigured){ Serial.println("flash incorrectly configured, SPIFFS cannot start, IDE size: " + ideSize + ", real size: " + realSize);}
-
+  wifi_setup();
   Serial.println("Starting Code");
   Wire.begin();
   leds_setup();
   mpu_setup();
   modeInit();
-  wifi_setup();
+
   FastLED.setBrightness(20);
   //  debug.attach(1, readYPR);
 }
@@ -69,15 +79,19 @@ void setup() {
 
 void loop() {
   wifi_loop();
-
-  mpu_loop();
   touch_read();
 
   switch (modeEnabled){
-    case 2:
+    case 3:
+      if(respondSequence){greySays_respond();}
+      break;
+    case 4:
+      mpu_loop();
       flipleds();
       break;
+
   }
+  
 }
 
 
@@ -100,7 +114,6 @@ void swipeMode() {
     modeSelection = 1;
   }
   leds_modeChange(modes[modeSelection].color);
-  stroke.attach_ms(100, leds_modeChange, modes[modeSelection].color);
   Serial.println("Mode Selection: " + modes[modeSelection].name);
 }
 
@@ -108,17 +121,20 @@ void modeInit() {
   switch (modeEnabled) {
     case 0:
       modeSelection = modeEnabled;
-      leds_modeChange(modes[0].color);
-      stroke.attach_ms(100, leds_modeChange, modes[0].color);
+      leds_modeChange(modes[modeEnabled].color);
       break;
-    case 1:
-      fill_solid(leds, NUM_LEDS, CRGB::LightGrey);
+    case 1: //IDLE
+      fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
-    case 2:
+    case 2: //HIDE&SEEK
+//      fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
-    case 3:
+    case 3: //GREGSAYS
+      gregSays_setup();
+      fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
-    case 4:
+    case 4: //VISUALISE
+      fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
   }
   FastLED.show();
