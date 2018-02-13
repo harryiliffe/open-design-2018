@@ -1,6 +1,8 @@
 body {
   background-color: lightgrey;
   font-family: 'Roboto', sans-serif;
+  padding: 5px;
+  margin: 0px;
 }
 
 /* BLOCKS */
@@ -75,14 +77,14 @@ h3 {
 /* INPUTS */
 
 
-.button a {
+.button .innerButton {
     text-decoration: none;
     border: none;
     color: white;
     font-size: 15px;
     cursor: pointer;
     outline: none;
-    margin: 0px auto;
+    margin: 5px auto;
     padding: 0px 10px;
     padding-top: 5px;
     display: inline-block;
@@ -90,56 +92,58 @@ h3 {
     border-radius: 5px;
     height: 25px;
     min-width: 22%;
+    background-color: inherit;
 }
 
-.button a:hover {
+.button .innerButton:hover {
 background-color: #eee !important;
 }
 
- .explore .button a{
-   background-color: white;
-   color: #79cbca;
- }
 
- .manage .button a{
-   background-color: white;
-   color: #fcd486;
- }
+.explore .button .innerButton{
+ background-color: white;
+ color: #79cbca;
+}
 
- .visualise .button a{
-   background-color: white;
-   color: #f19b96;
- }
+.manage .button .innerButton{
+ background-color: white;
+ color: #fcd486;
+}
 
- .hidenseek .button a{
-   background-color: white;
-   color: #79cbca;
- }
+.visualise .button .innerButton{
+ background-color: white;
+ color: #f19b96;
+}
 
- .says .button a{
-   background-color: white;
-   color: #79cbca;
- }
+.hidenseek .button .innerButton{
+ background-color: white;
+ color: #79cbca;
+}
 
- .blockbutton {
-   text-decoration: none;
-   border: none;
-   outline: none;
-   cursor: pointer;
-   display: block;
-   min-height: auto;
- }
+.says .button .innerButton{
+ background-color: white;
+ color: #79cbca;
+}
 
- .backbutton  {
-     float:left;
-     margin-top: 15px;
-     left: 5px;
-     top: 5px;
-     width: 10px;
-     height: 10px;
-     border: solid white;
-     border-width: 0px 5px 5px 0px;
-     transform: rotate(135deg);
+.blockbutton {
+ text-decoration: none;
+ border: none;
+ outline: none;
+ cursor: pointer;
+ display: block;
+ min-height: auto;
+}
+
+.backbutton  {
+   float:left;
+   margin-top: 15px;
+   left: 5px;
+   top: 5px;
+   width: 10px;
+   height: 10px;
+   border: solid white;
+   border-width: 0px 5px 5px 0px;
+   transform: rotate(135deg);
 }
 
 
