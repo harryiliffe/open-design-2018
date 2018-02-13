@@ -22,18 +22,21 @@ window.onload = init;
 function init(){
   switch (document.title) {
     case "Hide & Seek":
-      document.getElementById("playhidenseek").addEventListener("click", function() { sendJson( {type:"modechange", mode:2} ); });
+      console.log("added Hide & Seek buttons");
+      document.getElementById("playhidenseek").addEventListener("click", function() { connection.send('M2'); });
       break;
-    case "Grey Says":
-      document.getElementById("playgregsays").addEventListener("click", function() { sendJson( {type:"modechange", mode:3} ); });
+    case "Greg Says":
+      console.log("added Greg Says buttons");
+      document.getElementById("playgregsays").addEventListener("click", function() { connection.send('M3');});
       break;
     case "Visualise":
-      document.getElementById("playvisualise").addEventListener("click", function() { sendJson( {type:"modechange", mode:4} ); });
+      console.log("added Visualise buttons");
+      document.getElementById("playvisualise").addEventListener("click", function() { connection.send('M4'); });
       break;
   }
 }
 
 function sendJson(object) {
   console.log(object);
-  connection.sendJson(object);
+  connection.send(object);
 }
