@@ -75,23 +75,18 @@ void leds_stroke(int start) {
 
 void leds_modeChange(CRGB color) {
   if (!stroking) {
+    stroke.attach_ms(100, leds_modeChange, color);
     strokeLEDNumber = 0;
     strokeColor = color;
   }
   stroking = true;
   if (strokeNumber < 1) {
-//    if (strokeLEDNumber > 0 && strokeLEDNumber < NUM_LEDS + 1) {
-//      leds[strokeLEDNumber - 1] = CRGB::Black;
-////      Serial.println("blacked led " + String(strokeLEDNumber - 1));
-//    }
     if (strokeLEDNumber < NUM_LEDS) {
       leds[strokeLEDNumber] = strokeColor;
       strokeLEDNumber++;
-//      Serial.println("lit led " + String(strokeLEDNumber));
     } else {
       strokeNumber++;
       strokeLEDNumber = 0;
-//      Serial.println("added to strokenumber");
     }
   } else {
     stroke.detach();
