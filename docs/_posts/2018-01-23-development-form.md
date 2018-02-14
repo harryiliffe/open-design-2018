@@ -1,8 +1,7 @@
 ---
 layout: default
 categories: development
-title: "Hardware: Electronics"
-subtitle: "Defining Open Design"
+title: "Form (Housing)"
 order: 4
 ---
 

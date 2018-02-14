@@ -2,7 +2,6 @@
 layout: default
 categories: ideation
 title: "Concepts"
-subtitle: "An example Page"
 order: 4
 ---
 

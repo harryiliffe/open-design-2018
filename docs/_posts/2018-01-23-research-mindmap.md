@@ -2,7 +2,6 @@
 layout: default
 categories: research
 title: "Open Design Mind Map"
-subtitle: "Defining Open Design"
 order: 4
 ---
 
