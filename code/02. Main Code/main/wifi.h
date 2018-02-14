@@ -1,7 +1,7 @@
 
 #include <ESP8266WiFi.h>
-#include <ESP8266WiFiMulti.h>
-#include <ArduinoOTA.h>
+#include <DNSServer.h>
+
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 #include <FS.h>
@@ -12,8 +12,6 @@
 // ===                      WEBSITE SETUP                       ===
 // ================================================================
 
-ESP8266WiFiMulti wifiMulti;       // Create an instance of the ESP8266WiFiMulti class, called 'wifiMulti'
-
 ESP8266WebServer server = ESP8266WebServer(80);       // create a web server on port 80
 WebSocketsServer webSocket = WebSocketsServer(81);    // create a websocket server on port 81
 
@@ -22,11 +20,11 @@ File fsUploadFile;                                    // a File variable to temp
 const char *ssid = "Greg 1.0"; // The name of the Wi-Fi network that will be created
 const char *password = "";   // The password required to connect to it, leave blank for an open network
 
-const char *OTAName = "ota";           // A name and a password for the OTA service
-//const char *OTAPassword = "ota";
-
-
 const char* mdnsName = "greg"; // Domain name for the mDNS responder
+
+const byte DNS_PORT = 53;
+IPAddress apIP(192, 168, 4, 1);
+DNSServer dnsServer;
 
 /*__________________________________________________________FUNCTION_DECLARATIONS__________________________________________________________*/
 
@@ -36,6 +34,7 @@ void startOTA();
 void startWebSocket();
 void startMDNS();
 void startServer();
+void startCaptivePortal();
 void handleNotFound();
 bool handleFileRead(String path);
 void handleFileUpload();
@@ -43,17 +42,21 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
 String formatBytes(size_t bytes);
 String getContentType(String filename);
 
+String responseHTML = ""
+  "<!DOCTYPE html><html><head><title>CaptivePortal</title></head><body>"
+  "<h1>Hello World!</h1><p>This is a captive portal example. All requests will "
+  "be redirected here.</p></body></html>";
+  
 void wifi_setup() {
 
   startSPIFFS();               // Start the SPIFFS and list all contents
 
   startWiFi();                 // Start a Wi-Fi access point, and try to connect to some given access points. Then wait for either an AP or STA connection
 
-  startOTA();                  // Start the OTA service
-
+  startCaptivePortal();
+  
   startWebSocket();            // Start a WebSocket server
 
-  startMDNS();                 // Start the mDNS responder
 
   startServer();               // Start a HTTP server with a file read handler and an upload handler
 
@@ -62,9 +65,9 @@ void wifi_setup() {
 }
 
 void wifi_loop() {
+  dnsServer.processNextRequest();
   webSocket.loop();                           // constantly check for websocket events
   server.handleClient();                      // run the server
-  ArduinoOTA.handle();                        // listen for OTA
 }
 
 
@@ -87,73 +90,22 @@ void startSPIFFS() { // Start the SPIFFS and list all contents
 
 
 void startWiFi() { // Start a Wi-Fi access point, and try to connect to some given access points. Then wait for either an AP or STA connection
+  WiFi.mode(WIFI_AP);
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   WiFi.softAP(ssid, password);             // Start the access point
+  
   Serial.print("Access Point \"");
   Serial.print(ssid);
   Serial.println("\" started\r\n");
-  //  wifiMulti.addAP("Ventilation Nation", "Somebodyoncetoldmetheworldisgonnar0llme");   // add Wi-Fi networks you want to connect to
-  wifiMulti.addAP("Flat-Queens", "hellotessa");
-    wifiMulti.addAP("Bridget", "Banana123");
-
   Serial.print("IP address:\t");
-  Serial.print(WiFi.localIP());
-
-  Serial.println("Connecting");
-  while (wifiMulti.run() != WL_CONNECTED && WiFi.softAPgetStationNum() < 1) {  // Wait for the Wi-Fi to connect
-    delay(250);
-    Serial.print('.');
-  }
-  Serial.println("\r\n");
-  if (WiFi.softAPgetStationNum() == 0) {     // If the ESP is connected to an AP
-    Serial.print("Connected to ");
-    Serial.println(WiFi.SSID());             // Tell us what network we're connected to
-    Serial.print("IP address:\t");
-    Serial.print(WiFi.localIP());            // Send the IP address of the ESP8266 to the computer
-  } else {                                   // If a station is connected to the ESP SoftAP
-    Serial.print("Station connected to ESP8266 AP");
-    Serial.print("IP address:\t");
-    Serial.print(WiFi.localIP());
-  }
-  Serial.println("\r\n");
+  Serial.print(apIP);
 }
 
-
-void startOTA() { // Start the OTA service
-  ArduinoOTA.setHostname(OTAName);
-//  ArduinoOTA.setPassword(OTAPassword);
-
-  ArduinoOTA.onStart([]() {
-    Serial.println("Start");
-  });
-  ArduinoOTA.onEnd([]() {
-    Serial.println("\r\nEnd");
-  });
-  ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
-    Serial.printf("Progress: %u%%\r", (progress / (total / 100)));
-  });
-  ArduinoOTA.onError([](ota_error_t error) {
-    Serial.printf("Error[%u]: ", error);
-    if (error == OTA_AUTH_ERROR) Serial.println("Auth Failed");
-    else if (error == OTA_BEGIN_ERROR) Serial.println("Begin Failed");
-    else if (error == OTA_CONNECT_ERROR) Serial.println("Connect Failed");
-    else if (error == OTA_RECEIVE_ERROR) Serial.println("Receive Failed");
-    else if (error == OTA_END_ERROR) Serial.println("End Failed");
-  });
-  ArduinoOTA.begin();
-  Serial.println("OTA ready\r\n");
-}
 
 void startWebSocket() { // Start a WebSocket server
   webSocket.begin();                          // start the websocket server
   webSocket.onEvent(webSocketEvent);          // if there's an incomming websocket message, go to function 'webSocketEvent'
   Serial.println("WebSocket server started.");
-}
-
-void startMDNS() { // Start the mDNS responder
-  MDNS.begin(mdnsName);                        // start the multicast domain name server
-  Serial.print("mDNS responder started: http://");
-  Serial.print(mdnsName);
-  Serial.println(".local");
 }
 
 void startServer() { // Start a HTTP server with a file read handler and an upload handler
@@ -171,11 +123,14 @@ void startServer() { // Start a HTTP server with a file read handler and an uplo
   Serial.println("HTTP server started.");
 }
 
+void startCaptivePortal(){
+  dnsServer.start(DNS_PORT, "*", apIP);
+}
 /*__________________________________________________________SERVER_HANDLERS__________________________________________________________*/
 
 void handleNotFound() { // if the requested file or page doesn't exist, return a 404 not found error
   if (!handleFileRead(server.uri())) {        // check if the file exists in the flash memory (SPIFFS), if so, send it
-    server.send(404, "text/plain", "404: File Not Found");
+      handleFileRead("/");
   }
 }
 
