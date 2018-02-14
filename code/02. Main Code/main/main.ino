@@ -15,10 +15,17 @@ void sound_stopLights(int light);
 void sound_stopTone(int pin);
 void greySays_playLevel();
 void greySays_respond();
+void sound_arf();
+void sound_ruff();
+void sound_chirp();
+void sound_meow();
+void sound_meow2();
+void sound_mew();
 //===================================================================
 
 
 
+int happiness = 10;
 
 int modeSelection = 0;
 
@@ -33,7 +40,7 @@ struct Mode {
   bool ledsEnabled;
 };
 
-int modeEnabled = 0;
+int modeEnabled = 1;
 
 #define NUM_MODES 6
 
@@ -63,19 +70,12 @@ Mode modes[NUM_MODES] = {
 
 void setup() {
   Serial.begin(72880);
-
-  String realSize = String(ESP.getFlashChipRealSize());
-  String ideSize = String(ESP.getFlashChipSize());
-  bool flashCorrectlyConfigured = realSize.equals(ideSize);
-  if (!flashCorrectlyConfigured) {
-    Serial.println("flash incorrectly configured, SPIFFS cannot start, IDE size: " + ideSize + ", real size: " + realSize);
-  }
-  
+  pinMode(SPEAKER, OUTPUT);
   startSPIFFS();
   config_load();
-  
+
   wifi_setup();
-  Serial.println("Starting Code");
+
   Wire.begin();
   leds_setup();
   mpu_setup();
@@ -112,9 +112,24 @@ void strokeDetect(int i) {
       swipeMode();
       break;
     case MODE_IDLE:
-      leds_stroke(i);
-      stroke.attach_ms(duration, leds_stroke, i);
-      Serial.println("Stroke LEDS:" + String(duration) + " ms, from " + String(i));
+      if(!stroking){strokeColor = CHSV(strokeColor.hue+4, 255, 255);}
+      leds_stroke();
+      if (random(happiness, 13) == 12 && !stroking) {
+        switch (random(0, 4)) {
+          case 1:
+            sound_meow2();
+            break;
+          case 2:
+            sound_mew();
+            break;
+          case 3:
+            sound_chirp();
+            break;
+        }
+      }
+      if(happiness<10){
+        happiness++;
+      }
       break;
   }
 }
@@ -135,6 +150,7 @@ void modeInit() {
       leds_modeChange(modes[modeEnabled].color);
       break;
     case MODE_IDLE: //IDLE
+      strokeColor = CHSV(random8(), 255, 255);
       fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
     case MODE_HIDESEEK: //HIDE&SEEK
@@ -151,7 +167,6 @@ void modeInit() {
       fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
   }
-  FastLED.show();
+  leds_show(true);
 }
-
 
