@@ -1,3 +1,5 @@
+var configBoxes = {};
+
 try{
   var connection = new WebSocket('ws://'+location.hostname+':81/', ['arduino']);
 
@@ -20,7 +22,12 @@ catch(err) {}
 
 window.onload = init;
 function init(){
+  configBoxes = document.getElementsByClassName("config")
   switch (document.title) {
+    case "Main Menu":
+      console.log("added Main Menu buttons");
+      document.getElementById("applyConfig").addEventListener("click", sendConfig);
+      break;
     case "Hide & Seek":
       console.log("added Hide & Seek buttons");
       document.getElementById("playhidenseek").addEventListener("click", function() { connection.send('M2'); });
@@ -36,7 +43,15 @@ function init(){
   }
 }
 
-function sendJson(object) {
-  console.log(object);
-  connection.send(object);
+function sendConfig() {
+  var config = "C";
+  for(var i=0;i<configBoxes.length;i++){
+    if(configBoxes[i].checked){
+      config += "1"
+    } else {
+      config += "0"
+    }
+  }
+  console.log(config);
+  // connection.send(config);
 }

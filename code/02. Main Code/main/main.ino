@@ -48,10 +48,10 @@ int modeEnabled = 0;
 Mode modes[NUM_MODES] = {
   {0, "Switch", CRGB::White, true, false, true},
   {1, "Idle", CRGB::Blue, false, true, true},
-  {2, "Hide & Seek", CRGB::Aqua, false, false, true},
-  {3, "Greg Says", CRGB::Green, false, false, false},
+  {2, "Hide & Seek", 0x79cbca, false, false, true},
+  {3, "Greg Says", 0xfcd486, false, false, false},
   {4, "Sing", CRGB::Green, false, false, false},
-  {5, "Visualise", CRGB::Yellow, false, false, true},
+  {5, "Visualise", 0xf19b96, false, false, true},
 };
 
 
