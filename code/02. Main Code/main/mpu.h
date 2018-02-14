@@ -32,7 +32,7 @@ float accelVector;
 // packet structure for InvenSense teapot demo
 uint8_t teapotPacket[14] = { '$', 0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0x00, 0x00, '\r', '\n' };
 
-float radtodeg(float angle){
+float radtodeg(float angle) {
   return angle * 180 / M_PI;
 }
 
@@ -137,16 +137,16 @@ void mpu_loop() {
     mpu.dmpGetQuaternion(&quart, fifoBuffer);
     mpu.dmpGetGravity(&gravity, &quart);
     mpu.dmpGetYawPitchRoll(ypr, &quart, &gravity);
-    
-//#ifdef OUTPUT_READABLE_YAWPITCHROLL
-//    // display Euler angles in degrees
-//    Serial.print("ypr\t");
-//    Serial.print(radtodeg(ypr[0]));
-//    Serial.print("\t");
-//    Serial.print(radtodeg(ypr[1]));
-//    Serial.print("\t");
-//    Serial.println(radtodeg(ypr[2]));
-//#endif
+
+    //#ifdef OUTPUT_READABLE_YAWPITCHROLL
+    //    // display Euler angles in degrees
+    //    Serial.print("ypr\t");
+    //    Serial.print(radtodeg(ypr[0]));
+    //    Serial.print("\t");
+    //    Serial.print(radtodeg(ypr[1]));
+    //    Serial.print("\t");
+    //    Serial.println(radtodeg(ypr[2]));
+    //#endif
 
 #ifdef OUTPUT_READABLE_REALACCEL
     // display real acceleration, adjusted to remove gravity
@@ -192,17 +192,17 @@ void mpu_loop() {
     Serial.write(teapotPacket, 14);
     teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
 #endif
-    accelVector = sqrt(sq(aaWorld.x)+sq(aaWorld.y)+sq(aaWorld.z));
+    accelVector = sqrt(sq(aaWorld.x) + sq(aaWorld.y) + sq(aaWorld.z));
   }
 }
 
 
-void readYPR(){
-    Serial.print("ypr\t");
-    Serial.print(radtodeg(ypr[0]));
-    Serial.print("\t");
-    Serial.print(radtodeg(ypr[1]));
-    Serial.print("\t");
-    Serial.println(radtodeg(ypr[2]));
+void readYPR() {
+  Serial.print("ypr\t");
+  Serial.print(radtodeg(ypr[0]));
+  Serial.print("\t");
+  Serial.print(radtodeg(ypr[1]));
+  Serial.print("\t");
+  Serial.println(radtodeg(ypr[2]));
 }
 

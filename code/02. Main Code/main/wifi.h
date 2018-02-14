@@ -41,11 +41,6 @@ void handleFileUpload();
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght);
 String formatBytes(size_t bytes);
 String getContentType(String filename);
-
-String responseHTML = ""
-  "<!DOCTYPE html><html><head><title>CaptivePortal</title></head><body>"
-  "<h1>Hello World!</h1><p>This is a captive portal example. All requests will "
-  "be redirected here.</p></body></html>";
   
 void wifi_setup() {
 
