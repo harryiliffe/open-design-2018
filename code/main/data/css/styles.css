@@ -1,0 +1,270 @@
+body {
+  background-color: lightgrey;
+  font-family: 'Roboto', sans-serif;
+  padding: 5px;
+  margin: 0px;
+}
+
+/* BLOCKS */
+
+.main {
+  width: 420px;
+  max-width: 100%;
+  height: auto;
+  align: center;
+  margin: 0px auto;
+  padding-bottom: 1;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.block {
+  height: auto;
+  color: white;
+  padding: 6px 25px;
+  position: relative;
+  margin: 10px;
+  border-radius: 2px;
+  min-height: 150px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.header {
+  background-color: #818dc5;
+
+  margin: 0px;
+  border-radius: 2px 2px 0px 0px;
+  min-height: unset;
+}
+
+.explore {
+  background-color: #79cbca;
+}
+
+.manage {
+  background-color: #fcd486;
+}
+
+/* MODE COLORS */
+
+.visualise {
+  background-color: #f19b96;
+}
+
+.hidenseek {
+  background-color: #79cbca;
+}
+
+.says {
+  background-color: #fcd486;
+}
+
+.play {
+  background-color: #fcd486;
+}
+
+.idle {
+  background-color: #fcd486;
+}
+
+/* FONTS */
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 26px;
+  -webkit-margin-before: 10px;
+  -webkit-margin-after: 10px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+/* INPUTS */
+
+
+.button .innerButton {
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    margin: 5px auto;
+    padding: 0px 10px;
+    padding-top: 5px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    height: 25px;
+    min-width: 22%;
+    background-color: inherit;
+}
+
+.button .innerButton:hover {
+background-color: #eee !important;
+}
+
+
+.explore .button .innerButton{
+ background-color: white;
+ color: #79cbca;
+}
+
+.manage .button .innerButton{
+ background-color: white;
+ color: #fcd486;
+}
+
+.visualise .button .innerButton{
+ background-color: white;
+ color: #f19b96;
+}
+
+.hidenseek .button .innerButton{
+ background-color: white;
+ color: #79cbca;
+}
+
+.says .button .innerButton{
+ background-color: white;
+ color: #79cbca;
+}
+
+.blockbutton {
+ text-decoration: none;
+ border: none;
+ outline: none;
+ cursor: pointer;
+ display: block;
+ min-height: auto;
+}
+
+.backbutton  {
+   float:left;
+   margin-top: 15px;
+   left: 5px;
+   top: 5px;
+   width: 10px;
+   height: 10px;
+   border: solid white;
+   border-width: 0px 5px 5px 0px;
+   transform: rotate(135deg);
+}
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    outline: none;
+    width: 100%;
+    margin: 6px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 0px;
+    height: 15px;
+    width: 15px;
+    margin-top: -6px;
+    border-radius: 7.5px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: inherit;
+    height: 4px;
+    background: white;
+    border-radius: 1px;
+}
+
+
+/* Customize the label (the container) */
+.checkbox {
+  background-color: #8e8e8e;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin: 12px 30px;
+  padding-top: 3px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  min-width: 15%;
+  height: 22px;
+  text-align: left;
+  border-radius: 5px;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px 0px 0px 5px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: #ffa000;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.explore label.checkbox{
+  background-color: white;
+  color: #79cbca;
+}
+
+.manage label.checkbox{
+  background-color: white;
+  color: #fcd486;
+}
+
+.visualise label.checkbox{
+  background-color: white;
+  color: #f19b96;
+}
