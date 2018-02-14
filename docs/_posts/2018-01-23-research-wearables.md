@@ -2,7 +2,6 @@
 layout: default
 categories: ideation
 title: "Wearables Overview"
-subtitle: "An example Page"
 order: 1
 ---
 We decided to explore wearables as our category due to it being a very new, interesting field as well as offering more of a challenge.

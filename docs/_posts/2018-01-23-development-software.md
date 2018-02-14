@@ -1,10 +1,10 @@
 ---
 layout: default
-categories: electronics
-title: "Problems Uploading to ESP2866"
-subtitle: "Defining Open Design"
+categories: development
+title: "Software"
 order: 4
 ---
+## Problems uploading to the ESP2866
 
 After milling a circuit board breakout for an ESP8266-12F and soldering it all together I discovered that I couldn't upload to it at all. It would run the code and appear to go into Uart Bootloader Mode but would not receive any code at all.
 

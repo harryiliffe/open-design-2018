@@ -2,7 +2,6 @@
 layout: default
 categories: presentations
 title: "Final Presentation Script"
-subtitle:
 order: 4
 ---
 

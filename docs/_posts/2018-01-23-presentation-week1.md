@@ -2,7 +2,6 @@
 layout: default
 categories: presentations
 title: "Week 1"
-subtitle: "An example Page"
 order: 4
 ---
 
