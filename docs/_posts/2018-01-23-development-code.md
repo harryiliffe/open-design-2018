@@ -1,7 +1,7 @@
 ---
 layout: default
-categories: electronics
-title: "Working on the Code"
+categories: development
+title: "Hardware: Electronics"
 subtitle: "Defining Open Design"
 order: 4
 ---
