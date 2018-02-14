@@ -1,4 +1,3 @@
-#include <ArduinoJson.h>
 
 #include "Wire.h"
 
@@ -19,7 +18,6 @@ void greySays_respond();
 //===================================================================
 
 
-StaticJsonBuffer<200> jsonBuffer;
 
 
 
@@ -38,14 +36,22 @@ struct Mode {
 
 int modeEnabled = 0;
 
-#define NUM_MODES 5
+#define NUM_MODES 6
+
+#define MODE_SWITCH 0
+#define MODE_IDLE 1
+#define MODE_HIDESEEK 2
+#define MODE_GREGSAYS 3
+#define MODE_VISUALISE 4
+#define MODE_SING 5
 
 Mode modes[NUM_MODES] = {
   {0, "Switch", CRGB::White, true, false, true},
   {1, "Idle", CRGB::Blue, false, true, true},
   {2, "Hide & Seek", CRGB::Aqua, false, false, true},
   {3, "Greg Says", CRGB::Green, false, false, false},
-  {4, "Visualise", CRGB::Yellow, false, false, true},
+  {4, "Sing", CRGB::Green, false, false, false},
+  {5, "Visualise", CRGB::Yellow, false, false, true},
 };
 
 
@@ -62,8 +68,10 @@ void setup() {
   String realSize = String(ESP.getFlashChipRealSize());
   String ideSize = String(ESP.getFlashChipSize());
   bool flashCorrectlyConfigured = realSize.equals(ideSize);
+  if (!flashCorrectlyConfigured) {
+    Serial.println("flash incorrectly configured, SPIFFS cannot start, IDE size: " + ideSize + ", real size: " + realSize);
+  }
 
-  if(!flashCorrectlyConfigured){ Serial.println("flash incorrectly configured, SPIFFS cannot start, IDE size: " + ideSize + ", real size: " + realSize);}
   wifi_setup();
   Serial.println("Starting Code");
   Wire.begin();
@@ -72,7 +80,6 @@ void setup() {
   modeInit();
 
   FastLED.setBrightness(20);
-  //  debug.attach(1, readYPR);
 }
 
 
@@ -81,26 +88,28 @@ void loop() {
   wifi_loop();
   touch_read();
 
-  switch (modeEnabled){
-    case 3:
-      if(respondSequence){greySays_respond();}
+  switch (modeEnabled) {
+    case MODE_GREGSAYS:
+      if (respondSequence) {
+        greySays_respond();
+      }
       break;
-    case 4:
+    case MODE_VISUALISE:
       mpu_loop();
       flipleds();
       break;
 
   }
-  
+
 }
 
 
 void strokeDetect(int i) {
   switch (modeEnabled) {
-    case 0:
+    case MODE_SWITCH:
       swipeMode();
       break;
-    case 1:
+    case MODE_IDLE:
       leds_stroke(i);
       stroke.attach_ms(duration, leds_stroke, i);
       Serial.println("Stroke LEDS:" + String(duration) + " ms, from " + String(i));
@@ -119,21 +128,24 @@ void swipeMode() {
 
 void modeInit() {
   switch (modeEnabled) {
-    case 0:
+    case MODE_SWITCH:
       modeSelection = modeEnabled;
       leds_modeChange(modes[modeEnabled].color);
       break;
-    case 1: //IDLE
+    case MODE_IDLE: //IDLE
       fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
-    case 2: //HIDE&SEEK
-//      fill_solid(leds, NUM_LEDS, CRGB::Black);
+    case MODE_HIDESEEK: //HIDE&SEEK
+      //      fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
-    case 3: //GREGSAYS
+    case MODE_GREGSAYS: //GREGSAYS
+      fill_solid(leds, NUM_LEDS, CRGB::Black);
       gregSays_setup();
+      break;
+    case MODE_VISUALISE: //VISUALISE
       fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
-    case 4: //VISUALISE
+    case MODE_SING: //VISUALISE
       fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
   }

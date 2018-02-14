@@ -95,6 +95,8 @@ void startWiFi() { // Start a Wi-Fi access point, and try to connect to some giv
   wifiMulti.addAP("Flat-Queens", "hellotessa");
     wifiMulti.addAP("Bridget", "Banana123");
 
+  Serial.print("IP address:\t");
+  Serial.print(WiFi.localIP());
 
   Serial.println("Connecting");
   while (wifiMulti.run() != WL_CONNECTED && WiFi.softAPgetStationNum() < 1) {  // Wait for the Wi-Fi to connect
