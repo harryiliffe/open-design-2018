@@ -31,7 +31,7 @@ body {
 }
 
 .header {
-  background-color: #818dc5;
+  background-color: #85d4eb;
 
   margin: 0px;
   border-radius: 2px 2px 0px 0px;
@@ -53,15 +53,15 @@ body {
 }
 
 .hidenseek {
-  background-color: #79cbca;
-}
-
-.says {
   background-color: #fcd486;
 }
 
+.says {
+  background-color: #79cbca;
+}
+
 .sing {
-  background-color: #85d4eb;
+  background-color: #818dc5;
 }
 
 .idle {
