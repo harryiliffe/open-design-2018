@@ -46,6 +46,8 @@ body {
   background-color: #fcd486;
 }
 
+/* MODE COLORS */
+
 .visualise {
   background-color: #f19b96;
 }
@@ -55,6 +57,14 @@ body {
 }
 
 .says {
+  background-color: #fcd486;
+}
+
+.sing {
+  background-color: #fcd486;
+}
+
+.idle {
   background-color: #fcd486;
 }
 
