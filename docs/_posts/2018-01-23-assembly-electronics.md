@@ -68,4 +68,4 @@ If you do not want to make your own circuit board, you can use an ESP8266 breako
 ### Step 4: Test Components
 
 Using the test code available in [code/tests](https://github.com/harryiliffe/open-design-2018/tree/master/code/01.%20First%20Tests) to test each component in turn.
-Once you can confirm that each component works move on to [Software](/assembly-software/).
+Once you can confirm that each component works move on to [Software](/open-design-2018//assembly-software/).
