@@ -27,7 +27,7 @@ catch(err) {}
 window.onload = init;
 function init(){
   configBoxes = document.getElementsByClassName("config")
-  if(configBoxes.length>0){}
+  if(configBoxes.length>0){
     loadConfig();
   }
 

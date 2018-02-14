@@ -34,10 +34,10 @@ void gregSays_setup() {
   noteDuration = gameSpeed * 0.875;
   delay(800);
   fill_solid(leds, NUM_LEDS, CRGB::Green);
-  FastLED.show();
+  leds_show(false);
   delay(800);
   fill_solid(leds, NUM_LEDS, CRGB::Black);
-  FastLED.show();
+  leds_show(false);
   delay(800);
   patternTimer.attach_ms(gameSpeed, greySays_playLevel);
   greySays_playLevel();
@@ -74,10 +74,10 @@ void greySays_respond() {
     Serial.printf("Congrats Level Up: Level %i\n", level);
     delay(300);
     fill_solid(leds, NUM_LEDS, CRGB::Green);
-    FastLED.show();
+    leds_show(false);
     delay(400);
     fill_solid(leds, NUM_LEDS, CRGB::Black);
-    FastLED.show();
+    leds_show(false);
     delay(400);
     playingSequence = true;
     patternProgress = 0;
