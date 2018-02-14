@@ -48,12 +48,12 @@ void touch_legDetect() {
     buttonState[LEGL1].touchRegistered = true;
     if (modeEnabled == 0) {
       modeEnabled = modeSelection;
-      Serial.println("Mode Changed: " + modes[modeEnabled].name);
+      Serial.println("Mode Changed: " + modes[modeEnabled].title);
       modeInit();
     } else {
       modeEnabled = 0;
       modeInit();
-      Serial.println("Mode Changed: " + modes[modeEnabled].name);
+      Serial.println("Mode Changed: " + modes[modeEnabled].title);
     }
   }
 }

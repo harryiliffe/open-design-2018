@@ -20,18 +20,17 @@ void greySays_respond();
 
 
 
-
 int modeSelection = 0;
-
-Ticker debug;
 
 struct Mode {
   int id;
-  String name;
+  String title;
   CRGB color;
   bool enabled;
   bool strokeAdjustment;
   bool strokeEnabled;
+  bool soundEnabled;
+  bool ledsEnabled;
 };
 
 int modeEnabled = 0;
@@ -46,15 +45,15 @@ int modeEnabled = 0;
 #define MODE_SING 5
 
 Mode modes[NUM_MODES] = {
-  {0, "Switch", CRGB::White, true, false, true},
-  {1, "Idle", CRGB::Blue, false, true, true},
-  {2, "Hide & Seek", 0x79cbca, false, false, true},
-  {3, "Greg Says", 0xfcd486, false, false, false},
-  {4, "Sing", CRGB::Green, false, false, false},
-  {5, "Visualise", 0xf19b96, false, false, true},
+  {0, "Main Menu", CRGB::White, true, false, true, 1, 1},
+  {1, "Emo Greg", 0xb3d99e, false, true, true, 1, 1},
+  {2, "Hide & Seek", 0x79cbca, false, false, true, 1, 1},
+  {3, "Greg Says", 0xfcd486, false, false, false, 1, 1},
+  {4, "Greg Sings", 0x85d4eb, false, false, false, 1, 1},
+  {5, "Visualise", 0xf19b96, false, false, true, 1, 1},
 };
 
-
+#include "config.h"
 #include "mpu.h"
 #include "leds.h"
 #include "touch.h"
@@ -71,7 +70,10 @@ void setup() {
   if (!flashCorrectlyConfigured) {
     Serial.println("flash incorrectly configured, SPIFFS cannot start, IDE size: " + ideSize + ", real size: " + realSize);
   }
-
+  
+  startSPIFFS();
+  config_load();
+  
   wifi_setup();
   Serial.println("Starting Code");
   Wire.begin();
@@ -123,7 +125,7 @@ void swipeMode() {
     modeSelection = 1;
   }
   leds_modeChange(modes[modeSelection].color);
-  Serial.println("Mode Selection: " + modes[modeSelection].name);
+  Serial.println("Mode Selection: " + modes[modeSelection].title);
 }
 
 void modeInit() {

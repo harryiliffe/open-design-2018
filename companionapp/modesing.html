@@ -1,8 +1,9 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="config.js"></script>
   <script src="websocket.js"></script>
-  <title>Sing</title>
+  <title>Greg Sings</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
 </head>
 <body>
@@ -16,14 +17,14 @@
 
   <div class="block explore">
     <p> SING MODE FILLER TEXT</p>
-    <div class="button"><a class="innerButton" type="button" id="playgregsays">Start Playing</a></div>
+    <div class="button"><a class="innerButton" type="button" id="playgregsings">Start Playing</a></div>
   </div>
 
   <div class="block manage">
     <h3>Manage</h3>
     <label class="checkbox">Enable Beeping<input type="checkbox" class="config"><span class="checkmark"></span></label>
     <label class="checkbox">Enable Lights<input type="checkbox" class="config"><span class="checkmark"></span></label>
-    <div class="button"><a class="innerButton">Apply</a></div>
+    <div class="button"><a class="innerButton" id="applyConfig">Apply</a></div>
   </div>
 
 </div>

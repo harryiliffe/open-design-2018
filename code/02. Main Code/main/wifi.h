@@ -49,7 +49,7 @@ String responseHTML = ""
   
 void wifi_setup() {
 
-  startSPIFFS();               // Start the SPIFFS and list all contents
+                 // Start the SPIFFS and list all contents
 
   startWiFi();                 // Start a Wi-Fi access point, and try to connect to some given access points. Then wait for either an AP or STA connection
 
@@ -98,7 +98,7 @@ void startWiFi() { // Start a Wi-Fi access point, and try to connect to some giv
   Serial.print(ssid);
   Serial.println("\" started\r\n");
   Serial.print("IP address:\t");
-  Serial.print(apIP);
+  Serial.println(apIP);
 }
 
 
@@ -186,11 +186,23 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
     case WStype_TEXT :                  // if new text data is received'
       if (payload[0] == 'M') {
         modeEnabled = int(payload[1]-48);
-        Serial.println("Mode Changed: " + modes[modeEnabled].name);
+        Serial.println("Mode Changed: " + modes[modeEnabled].title);
         leds_modeChange(modes[modeEnabled].color);
         modeInit();
         
+      } else if (payload[0] == 'S'){
+        modes[modeEnabled].soundEnabled = bool(payload[1]-48);
+        modes[modeEnabled].ledsEnabled = bool(payload[2]-48);
+        Serial.println("Updated Config");
+//        Serial.printf("%s - Sound: %i Leds: %i", modes[modeEnabled].title, modes[modeEnabled].soundEnabled, modes[modeEnabled].ledsEnabled);
+        Serial.print(modes[modeEnabled].title);
+        Serial.print(" - Sound: ");
+        Serial.print(modes[modeEnabled].soundEnabled);
+        Serial.print(" - Lights: ");
+        Serial.println(modes[modeEnabled].ledsEnabled);
+        config_save();
       }
+      
       break;
   }
 }
