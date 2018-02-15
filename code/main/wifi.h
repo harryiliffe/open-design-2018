@@ -182,7 +182,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
       if (payload[0] == 'M') {
         modeEnabled = int(payload[1]-48);
         Serial.println("Mode Changed: " + modes[modeEnabled].title);
-        leds_modeChange(modes[modeEnabled].color);
+        leds_modeChange();
         modeInit();
         
       } else if (payload[0] == 'S'){

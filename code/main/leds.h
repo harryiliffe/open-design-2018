@@ -50,6 +50,7 @@ void leds_fade() {
 
 void leds_stroke() {
   if (!stroking) {
+    stroke.detach();
     stroke.attach_ms(250, leds_stroke);
     strokeLEDNumber = 0;
     fadeCount = MAXFADECOUNT;
@@ -72,15 +73,17 @@ void leds_stroke() {
   leds_show(false);
 }
 
-void leds_modeChange(CRGB color) {
+void leds_modeChange() {
   if (!stroking) {
-    stroke.attach_ms(100, leds_modeChange, color);
+    stroking = true;
+    stroke.detach();
     strokeLEDNumber = 0;
+    stroke.attach_ms(250, leds_modeChange);
   }
-  stroking = true;
+  
   if (strokeNumber < 1) {
     if (strokeLEDNumber < NUM_LEDS) {
-      leds[strokeLEDNumber] = color;
+      leds[strokeLEDNumber] = modes[modeSelection].color;
       strokeLEDNumber++;
     } else {
       strokeNumber++;
@@ -91,7 +94,7 @@ void leds_modeChange(CRGB color) {
     strokeNumber = 0;
     stroking = false;
   }
-  leds_show(true);
+  leds_show(false);
 }
 
 

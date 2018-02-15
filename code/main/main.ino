@@ -52,7 +52,7 @@ int modeEnabled = 1;
 #define MODE_SING 5
 
 Mode modes[NUM_MODES] = {
-  {0, "Main Menu", CRGB::White, true, false, true, 1, 1},
+  {0, "Main Menu", 0xffffff, true, false, true, 1, 1},
   {1, "Emo Greg", 0xb3d99e, false, true, true, 1, 1},
   {2, "Hide & Seek", 0x79cbca, false, false, true, 1, 1},
   {3, "Greg Says", 0xfcd486, false, false, false, 1, 1},
@@ -139,7 +139,7 @@ void swipeMode() {
   if (modeSelection >= NUM_MODES) {
     modeSelection = 1;
   }
-  leds_modeChange(modes[modeSelection].color);
+  leds_modeChange();
   Serial.println("Mode Selection: " + modes[modeSelection].title);
 }
 
@@ -147,7 +147,7 @@ void modeInit() {
   switch (modeEnabled) {
     case MODE_SWITCH:
       modeSelection = modeEnabled;
-      leds_modeChange(modes[modeEnabled].color);
+      leds_modeChange();
       break;
     case MODE_IDLE: //IDLE
       strokeColor = CHSV(random8(), 255, 255);
