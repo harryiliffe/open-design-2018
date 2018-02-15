@@ -12,41 +12,41 @@ You will need a few main materials to complete the housing we designed for Greg 
 
 1. Wool Felt
 
-This is for the body of Greg and the wrist strap
+   This is for the body of Greg and the wrist strap
 
 2. Embroidery thread
 
-To keep Greg together (emotionally and physically)
+   To keep Greg together (emotionally and physically)
 
 3. PLA plastic
 
-This is to 3D Print his shell. In any colour (you could try flexible or glow in the dark filament for something funky)
+   This is to 3D Print his shell. In any colour (you could try flexible or glow in the dark filament for something funky)
 
 4. Conductive thread
 
- This is used to link Gregs' fins and legs to the capacitive touch sensor.
+    This is used to link Gregs' fins and legs to the capacitive touch sensor.
 
 5. Velcro, or your preferred fastening
 
-To keep Greg on you
+   To keep Greg on you
 
 6. Magnets 6mm by 1mm
 
-This is to keep the shell on
+   This is to keep the shell on
 
 ### Step 2: Machinery
 
 1. Laser cutter
 
-To cut out the wool felt.
+   To cut out the wool felt.
 
 2. 3D Printer
 
-To print out his shell.
+   To print out his shell.
 
 ### Step 3: Files
 
-Download the laser files from ![here](https://github.com/harryiliffe/open-design-2018/tree/master/form) And download the Fusion 360 Files ![here](http://a360.co/2HkOeeE) for the top and ![here](http://a360.co/2swG67p) for the base.
+Download the laser files from [here](https://github.com/harryiliffe/open-design-2018/tree/master/form) And download the Fusion 360 Files [here](http://a360.co/2HkOeeE) for the top and [here](http://a360.co/2swG67p) for the base.
 Or get crazy and create your own.
 
 ### Step 4: Assemble
