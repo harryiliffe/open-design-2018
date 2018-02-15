@@ -28,6 +28,8 @@ http://www.instructables.com/id/NFC-Habit-Tracker-Dory-Arduino-Wearable-Gadget/
 To visuals movement in 3d space and offer feedback
 Could be really cool to integrate into google Tilt Brush
 
+!['Traces' Notes]({{site.imageurl}}/mindmap_traces-research.jpg)
+
 4. Electronic note type thing:
 not sure a broad idea but could be cool to play around with.
 
