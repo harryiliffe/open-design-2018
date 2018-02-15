@@ -10,4 +10,4 @@ The roughly mocked-up wireframes below were used to structure our information in
 ![Initial App Wireframes]({{site.imageurl}}/initial-app-architecture.jpg)
 
 
-![App Journey Map]({{site.imageurl}}/app-journey-map.jpg)
+![App Journey Map]({{site.imageurl}}/Emily/app-journey-map.jpg)
