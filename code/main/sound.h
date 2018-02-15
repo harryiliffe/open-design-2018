@@ -25,6 +25,20 @@ void sound_playTone(int toneRef, int duration, bool overide, bool lights) {
   }
 }
 
+void sound_playToneEndless(int toneRef, bool overide, bool lights) {
+  if (!modes[modeEnabled].soundEnabled || !modes[0].soundEnabled ) return;
+  if (!playingNote || overide) {
+    Serial.printf("Playing Note %i\n", toneRef);
+    noTone(SPEAKER);
+    tone(SPEAKER, tones[toneRef]);
+    if (lights) {
+      fill_solid(leds, NUM_LEDS, CRGB::Black);
+      leds[toneRef] = toneColors[toneRef];
+      leds_show(false);
+    }
+  }
+}
+
 void sound_stopLights(int light) {
   leds[light] = CRGB::Black;
   leds_show(false);
@@ -69,38 +83,38 @@ void sound_arf() {    // dog arf
 
 void sound_chirp() {  // Bird chirp
   Serial.println("chirp");
-  for(uint8_t i=200; i>180; i--)
-     playTone(i,9);
+  for (uint8_t i = 200; i > 180; i--)
+    playTone(i, 9);
 }
 
 void sound_meow() {  // cat meow (emphasis ow "me")
   Serial.println("meow");
   uint16_t i;
-  playTone(5100,50);        // "m" (short)
-  playTone(394,180);        // "eee" (long)
-  for(i=990; i<1022; i+=2)  // vary "ooo" down
-     playTone(i,8);
-  playTone(5100,40);        // "w" (short)
+  playTone(5100, 50);       // "m" (short)
+  playTone(394, 180);       // "eee" (long)
+  for (i = 990; i < 1022; i += 2) // vary "ooo" down
+    playTone(i, 8);
+  playTone(5100, 40);       // "w" (short)
 }
 
 void sound_meow2() {  // cat meow (emphasis on "ow")
   Serial.println("meow2");
   uint16_t i;
-  playTone(5100,55);       // "m" (short)
-  playTone(394,170);       // "eee" (long)
+  playTone(5100, 55);      // "m" (short)
+  playTone(394, 170);      // "eee" (long)
   delay(30);               // wait a tiny bit
-  for(i=330; i<360; i+=2)  // vary "ooo" down
-     playTone(i,10);
-  playTone(5100,40);       // "w" (short)
+  for (i = 330; i < 360; i += 2) // vary "ooo" down
+    playTone(i, 10);
+  playTone(5100, 40);      // "w" (short)
 }
 
 void sound_mew() {  // cat mew
   Serial.println("mew");
   uint16_t i;
-  playTone(5100,55);       // "m"   (short)
-  playTone(394,130);       // "eee" (long)
-  playTone(384,35);        // "eee" (up a tiny bit on end)
-  playTone(5100,40);       // "w"   (short)
+  playTone(5100, 55);      // "m"   (short)
+  playTone(394, 130);      // "eee" (long)
+  playTone(384, 35);       // "eee" (up a tiny bit on end)
+  playTone(5100, 40);      // "w"   (short)
 }
 
 

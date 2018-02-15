@@ -28,8 +28,6 @@ bool config_load() {
   if (!json.success()) {
     Serial.println("Failed to parse config file");
     return false;
-  } else {
-    json.prettyPrintTo(Serial);
   }
 
 //  const char* serverName = json["serverName"];

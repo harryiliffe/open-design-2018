@@ -25,8 +25,6 @@ void sound_mew();
 
 
 
-int happiness = 10;
-
 int modeSelection = 0;
 
 struct Mode {
@@ -48,16 +46,16 @@ int modeEnabled = 1;
 #define MODE_IDLE 1
 #define MODE_HIDESEEK 2
 #define MODE_GREGSAYS 3
-#define MODE_VISUALISE 4
-#define MODE_SING 5
+#define MODE_GREGSINGS 4
+#define MODE_VISUALISE 5
 
 Mode modes[NUM_MODES] = {
   {0, "Main Menu", 0xffffff, true, false, true, 1, 1},
-  {1, "Emo Greg", 0xb3d99e, false, true, true, 1, 1},
-  {2, "Hide & Seek", 0x79cbca, false, false, true, 1, 1},
-  {3, "Greg Says", 0xfcd486, false, false, false, 1, 1},
-  {4, "Greg Sings", 0x85d4eb, false, false, false, 1, 1},
-  {5, "Visualise", 0xf19b96, false, false, true, 1, 1},
+  {1, "Emo Greg", CRGB::Green, false, true, true, 1, 1},
+  {2, "Hide & Seek", CRGB::Yellow, false, false, true, 1, 1},
+  {3, "Greg Says", CRGB::Aqua, false, false, false, 1, 1},
+  {4, "Greg Sings", CRGB::Purple, false, false, false, 1, 1},
+  {5, "Visualise", CRGB::Red, false, false, true, 1, 1},
 };
 
 #include "config.h"
@@ -81,7 +79,7 @@ void setup() {
   mpu_setup();
   modeInit();
 
-  FastLED.setBrightness(20);
+  //  FastLED.setBrightness(20);
 }
 
 
@@ -100,7 +98,9 @@ void loop() {
       mpu_loop();
       flipleds();
       break;
-
+    case MODE_GREGSINGS:
+      gregSing();
+      break;
   }
 
 }
@@ -112,9 +112,11 @@ void strokeDetect(int i) {
       swipeMode();
       break;
     case MODE_IDLE:
-      if(!stroking){strokeColor = CHSV(strokeColor.hue+4, 255, 255);}
+      if (!stroking) {
+        strokeColor = CHSV(strokeColor.hue + 6, 255, 255);
+      }
       leds_stroke();
-      if (random(happiness, 13) == 12 && !stroking) {
+      if (random(0, 1) == 1 && !stroking) {
         switch (random(0, 4)) {
           case 1:
             sound_meow2();
@@ -126,9 +128,6 @@ void strokeDetect(int i) {
             sound_chirp();
             break;
         }
-      }
-      if(happiness<10){
-        happiness++;
       }
       break;
   }
@@ -151,10 +150,10 @@ void modeInit() {
       break;
     case MODE_IDLE: //IDLE
       strokeColor = CHSV(random8(), 255, 255);
-      fill_solid(leds, NUM_LEDS, CRGB::Black);
+      fill_solid(leds, NUM_LEDS, strokeColor);
       break;
     case MODE_HIDESEEK: //HIDE&SEEK
-      //      fill_solid(leds, NUM_LEDS, CRGB::Black);
+      fill_solid(leds, NUM_LEDS, CRGB::Red);
       break;
     case MODE_GREGSAYS: //GREGSAYS
       fill_solid(leds, NUM_LEDS, CRGB::Black);
@@ -163,8 +162,12 @@ void modeInit() {
     case MODE_VISUALISE: //VISUALISE
       fill_solid(leds, NUM_LEDS, CRGB::Black);
       break;
-    case MODE_SING: //VISUALISE
+    case MODE_GREGSINGS: //VISUALISE
       fill_solid(leds, NUM_LEDS, CRGB::Black);
+      for (int i = 4; i > -1; i--) {
+        sound_playTone(i, 470, false, true);
+        delay(500);
+      }
       break;
   }
   leds_show(true);

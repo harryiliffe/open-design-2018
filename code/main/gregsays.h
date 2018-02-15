@@ -1,5 +1,3 @@
-
-
 #define PATTERNLENGTH 10
 
 int pattern[PATTERNLENGTH];
@@ -7,7 +5,7 @@ int pattern[PATTERNLENGTH];
 bool playingSequence;
 bool respondSequence;
 
-int gameSpeed = 1000;
+int gameSpeed = 600;
 int level;
 int noteDuration;
 int patternProgress;
@@ -44,7 +42,7 @@ void gregSays_setup() {
 }
 
 void greySays_playLevel() {
-  Serial.printf("Playing note %i from sequence: %i\n", pattern[patternProgress], patternProgress);
+  //  Serial.printf("Playing note %i from sequence: %i\n", pattern[patternProgress], patternProgress);
   if (patternProgress < level) {
     sound_playTone(pattern[patternProgress], noteDuration, false, true);
     patternProgress++;
@@ -58,14 +56,14 @@ void greySays_playLevel() {
 
 void greySays_respond() {
   if (!respondSequence) {
-    Serial.println("Waiting for Responses");
+    //    Serial.println("Waiting for Responses");
     respondSequence = true;
     respondProgress = 0;
   }
   if (buttonState[pattern[respondProgress]].touch && !buttonState[pattern[respondProgress]].touchRegistered && touch_exclusive(pattern[respondProgress], 0, 5) && !playingNote ) {
     buttonState[pattern[respondProgress]].touchRegistered = true;
     sound_playTone(pattern[respondProgress], noteDuration, false, true);
-    Serial.printf("Responding note %i from sequence: %i\n", pattern[respondProgress], respondProgress);
+    //    Serial.printf("Responding note %i from sequence: %i\n", pattern[respondProgress], respondProgress);
     respondProgress++;
   }
   if (respondProgress == level && !playingNote) {
@@ -83,6 +81,24 @@ void greySays_respond() {
     patternProgress = 0;
     greySays_playLevel();
     patternTimer.attach_ms(gameSpeed, greySays_playLevel);
+  }
+}
+
+int singingNote = NULL;
+
+void gregSing() {
+  for (int i = 0; i < NUM_LEDS; i++) {
+    if (buttonState[i].touch && !buttonState[i].touchRegistered) {
+      singingNote = i;
+      buttonState[i].touchRegistered = true;
+      sound_playToneEndless(i, false, true);
+    } else if (!buttonState[i].touch && singingNote == i) {
+      singingNote = NULL;
+      Serial.println("Stopping Note Via greg Sings");
+      noTone(SPEAKER);
+      fill_solid(leds, NUM_LEDS, CRGB::Black);
+      leds_show(true);
+    }
   }
 }
 
