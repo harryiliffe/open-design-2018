@@ -55,7 +55,7 @@ Mode modes[NUM_MODES] = {
   {2, "Hide & Seek", CRGB::Yellow, false, false, true, 1, 1},
   {3, "Greg Says", CRGB::Aqua, false, false, false, 1, 1},
   {4, "Greg Sings", CRGB::Purple, false, false, false, 1, 1},
-  {5, "Visualise", CRGB::Red, false, false, true, 1, 1},
+  {5, "Visualise", CRGB::Pink, false, false, true, 1, 1},
 };
 
 #include "config.h"
@@ -102,7 +102,6 @@ void loop() {
       gregSing();
       break;
   }
-
 }
 
 
@@ -116,7 +115,7 @@ void strokeDetect(int i) {
         strokeColor = CHSV(strokeColor.hue + 6, 255, 255);
       }
       leds_stroke();
-      if (random(0, 1) == 1 && !stroking) {
+      if (random(0, 2) == 1) {
         switch (random(0, 4)) {
           case 1:
             sound_meow2();
