@@ -11,7 +11,7 @@ This section will guide you through assembling the Electronics.
 For this project there are a number of components, some are required, other are optional.
 
 1. Main Circuit Board
-  * ESP8266 - The main brains of G.R.E.G
+  * ESP8266 - The main brains of Greg
   * 10k ohm resistors x 2 (1206 package size)
   * 1k ohm resistors x 3 (1206 package size)
   * 100 ohm resistor x 1 (Optional: For Speaker, 1206 package size)
@@ -40,7 +40,7 @@ For this project there are a number of components, some are required, other are 
 
 6. Conductive Thread
 
-   This is used link G.R.E.Gs fins and legs to the capacitive touch sensor.
+   This is used link Greg's fins and legs to the capacitive touch sensor.
 
 7. Battery
 
@@ -67,5 +67,5 @@ If you do not want to make your own circuit board, you can use an ESP8266 breako
 
 ### Step 4: Test Components
 
-Using the test code available in [code/tests](https://github.com/harryiliffe/open-design-2018/tree/master/code/01.%20First%20Tests) to test each component in turn.
+Using the test code available in [code/tests](https://github.com/harryiliffe/open-design-2018/tree/master/code/test) to test each component in turn.
 Once you can confirm that each component works move on to [Software](/open-design-2018//assembly-software/).

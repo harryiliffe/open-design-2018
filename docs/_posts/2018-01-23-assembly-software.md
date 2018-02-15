@@ -17,11 +17,12 @@ There are a number of software requirements you need to be able to program Greg.
   * [arduinoWebSockets](https://github.com/Links2004/arduinoWebSockets) - for hosting the companion app
 
 4. Setup Flashing Tools
+  * Select the board you are using or enter the following for our custom circuit board
   * Board: GENRIC ESP8266 MODULE
   * Flash Mode: DIO
   * Flash Size: 4M(1M SPIFFS)
 
-   or select the board you have chosen.
+
 5. Open Arduino IDE and connect Greg's brain to your computer via an FTDI Cable.
 
    IMAGE OF FDTI CABLE CONNECTION
@@ -34,6 +35,9 @@ There are a number of software requirements you need to be able to program Greg.
 
 8. Upload the sketch
 
+9. Keep the FDTI cable connected and open the serial monitor.
+  * Below is an image showing the normal output on the serial monitor
+  IMAGE OF FDTI CABLE CONNECTION
 
 ## Troubleshooting
 
