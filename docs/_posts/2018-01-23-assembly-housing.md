@@ -46,7 +46,7 @@ To print out his shell.
 
 ### Step 3: Files
 
-Download the files from our [github]
+Download the laser files from ![here](https://github.com/harryiliffe/open-design-2018/tree/master/form) And download the Fusion 360 Files ![here](http://a360.co/2HkOeeE) for the top and ![here](http://a360.co/2swG67p) for the base.
 Or get crazy and create your own.
 
 ### Step 4: Assemble
