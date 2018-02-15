@@ -9,7 +9,7 @@ order: 4
 
 Form development began with some simple sketches and brainstorming of form ideas and concepts surrounding that. We wanted to insure we kept in mind our key words from our word map above.
 
-![Form]({{site.imageurl/liz/Page1.jpg}})
+![Form]({{site.imageurl}}/liz/Page1.jpg)
 
 We began with an initial idea of a simple felt wrap bracelet but felt limited by the size. The form was also being heavily lead by the electronics and we wanted them to work in harmony rather then force issues upon each other. We loved the felt material 100% wool property was breathable and comfortable on the skin.
 
@@ -49,4 +49,4 @@ GREG In his final form!
 ![Form]({{site.imageurl}}/final/a.jpg)
 ![Form]({{site.imageurl}}/final/b.jpg)
 
-You can see details about how to make your own Greg on our ![Github](https://harryiliffe.github.io/open-design-2018/assembly-housing/)
+You can see details about how to make your own Greg on our [Github](https://harryiliffe.github.io/open-design-2018/assembly-housing/)
