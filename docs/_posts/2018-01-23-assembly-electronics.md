@@ -40,7 +40,7 @@ For this project there are a number of components, some are required, other are 
 
 6. Conductive Thread
 
-   This is used link Greg's fins and legs to the capacitive touch sensor.
+   This is used to link Greg's fins and legs to the capacitive touch sensor.
 
 7. Battery
 
