@@ -39,7 +39,7 @@ function init(){
     case "Emo Greg":
       console.log("added Idle buttons");
       document.getElementById("applyConfig").addEventListener("click", sendConfig);
-      document.getElementById("playidle").addEventListener("click", function() { connection.send('M2'); });
+      document.getElementById("playidle").addEventListener("click", function() { connection.send('M1'); });
       break;
     case "Hide & Seek":
       console.log("added Hide & Seek buttons");
@@ -54,12 +54,12 @@ function init(){
     case "Greg Sings":
       console.log("added Greg Sings buttons");
       document.getElementById("applyConfig").addEventListener("click", sendConfig);
-      document.getElementById("playgregsings").addEventListener("click", function() { connection.send('M2'); });
+      document.getElementById("playgregsings").addEventListener("click", function() { connection.send('M4'); });
       break;
     case "Visualise":
       console.log("added Visualise buttons");
       document.getElementById("applyConfig").addEventListener("click", sendConfig);
-      document.getElementById("playvisualise").addEventListener("click", function() { connection.send('M4'); });
+      document.getElementById("playvisualise").addEventListener("click", function() { connection.send('M5'); });
       break;
   }
 }

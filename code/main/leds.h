@@ -2,8 +2,8 @@
 
 #define NUM_LEDS 5
 #define DATA_PIN 14
-#define MAXFADECOUNT 40
-#define FADEDURATION 5000
+#define MAXFADECOUNT 80
+#define FADEDURATION 3000
 
 
 CRGB leds[NUM_LEDS];
@@ -43,6 +43,7 @@ void leds_fade() {
       leds[i].subtractFromRGB(255 / MAXFADECOUNT);
     }
   } else {
+    fill_solid(leds, NUM_LEDS, CRGB::Black);
     ledFader.detach();
   }
   leds_show(false);
@@ -78,7 +79,7 @@ void leds_modeChange() {
     stroking = true;
     stroke.detach();
     strokeLEDNumber = 0;
-    stroke.attach_ms(250, leds_modeChange);
+    stroke.attach_ms(120, leds_modeChange);
   }
   
   if (strokeNumber < 1) {

@@ -2,9 +2,10 @@
 #define ttp229 (0xAF>>1)
 #define NUM_BUTTONS 16
 
-#define LEGR 13
+#define LEGR1 15
+#define LEGR2 13
 #define LEGL1 14
-#define LEGL2 15
+#define LEGL2 12
 
 uint16_t data_out = 0;
 uint16_t data1, data2;
@@ -36,15 +37,15 @@ button buttonState[NUM_BUTTONS] = {
   {NULL, NULL, NULL, NULL, "null"}, //9
   {NULL, NULL, NULL, NULL, "null"}, //10
   {NULL, NULL, NULL, NULL, "null"}, //11
-  {NULL, NULL, NULL, NULL, "null"}, //12
+  {NULL, NULL, NULL, NULL, "leg"}, //12
   {NULL, NULL, NULL, NULL, "leg"}, //13
   {NULL, NULL, NULL, NULL, "leg"}, //14
   {NULL, NULL, NULL, NULL, "leg"}, //15
 };
 
 void touch_legDetect() {
-  if (buttonState[LEGR].touch && buttonState[LEGL1].touch && (!buttonState[LEGR].touchRegistered || !buttonState[LEGL1].touchRegistered)) {
-    buttonState[LEGR].touchRegistered = true;
+  if (buttonState[LEGR1].touch && buttonState[LEGL1].touch && (!buttonState[LEGR1].touchRegistered || !buttonState[LEGL1].touchRegistered)) {
+    buttonState[LEGR1].touchRegistered = true;
     buttonState[LEGL1].touchRegistered = true;
     if (modeEnabled == 0) {
       modeEnabled = modeSelection;
