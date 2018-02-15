@@ -39,7 +39,7 @@ body {
 }
 
 .explore {
-  background-color: #fcd486;
+  background-color: #b3d99e;
 }
 
 .manage {
@@ -112,7 +112,7 @@ background-color: #eee !important;
 
 .explore .button .innerButton{
  background-color: white;
- color: #79cbca;
+ color: #b3d99e;
 }
 
 .manage .button .innerButton{
