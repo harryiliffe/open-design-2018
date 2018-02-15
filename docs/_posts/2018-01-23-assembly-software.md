@@ -37,6 +37,8 @@ There are a number of software requirements you need to be able to program Greg.
 
 9. Keep the FDTI cable connected and open the serial monitor.
   * Below is an image showing the normal output on the serial monitor
+
+
   IMAGE OF FDTI CABLE CONNECTION
 
 ## Troubleshooting
