@@ -7,6 +7,8 @@ order: 4
 
 We did an initial prototype device with a Wemos D1 Mini and found that all the components worked together well. We quickly decided that we wanted to try to make our own breakout board for the ESP8266. This has a number of benefits including making wiring easier and fitting the form factor of our housing better with less compromises.
 
+![WEMOS Prototype]({{site.imageurl}}/Harry/IMG_3123.jpg)
+
 I designed and milled the first circuitboard based on a schematic from Craig and the ESP8266 wiki.
 
 Unfortutaly I than had many problems uploading to the ESP8266
@@ -54,6 +56,8 @@ After soldering the new board together with the correct resistors, I was finally
 This is the final circuit board design.
 It has breakout headers for 2 i2c connections, an addressable led header, a speaker header and an FDTI connector for uploading code.
 ![Circuit Board 2]({{site.imageurl}}/ciruictboard - 2.png)
+
+![Electronics Together at last]({{site.imageurl}}/final/electronics1.png)
 
 ### Breakout board for capacitive touch Sensor
 
