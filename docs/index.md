@@ -10,12 +10,12 @@ Welcome to our open design blog.
 
 How to interact with your GREG
 
-    1. Greg begins in idle mode you can pat him in this mode and he will make sounds and change colour.
-    2. Pinch his two front arms at the same time to go to the selection screen
-    3. Scroll using his spikes until you find a mode you want to enter
-    4. Pinch his two front arms at the same time to select you mode
-    5. PLAY!
-    6. To return to the selection screen pinch both his front arms and select any other mode
+  - Greg begins in idle mode you can pat him in this mode and he will make sounds and change colour.
+  - Pinch his two front arms at the same time to go to the selection screen
+  - Scroll using his spikes until you find a mode you want to enter
+  - Pinch his two front arms at the same time to select you mode
+  - PLAY!
+  - To return to the selection screen pinch both his front arms and select any other mode
 
 ![Form]({{site.imageurl}}/final/1.jpg)
 ![Form]({{site.imageurl}}/final/2.jpg)
